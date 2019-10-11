@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+
+
+yum install -y ansible
+
+if [ $? eq 0 ]; then
+
+	sleep 30
+	git clone https://github.com/pragathi-devopsgroup/ansible-playbooks.git
+	cd ansible-playbook
+
+fi
+
+/bin/ansible-playbook firstplaybook.yml
